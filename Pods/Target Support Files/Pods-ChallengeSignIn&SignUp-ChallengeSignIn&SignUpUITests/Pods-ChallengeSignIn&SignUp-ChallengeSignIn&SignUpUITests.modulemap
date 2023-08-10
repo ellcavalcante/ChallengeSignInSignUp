@@ -1,0 +1,6 @@
+framework module Pods_ChallengeSignIn_SignUp_ChallengeSignIn_SignUpUITests {
+  umbrella header "Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
