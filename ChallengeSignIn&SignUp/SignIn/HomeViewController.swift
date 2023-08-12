@@ -18,7 +18,22 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        signInScreen?.delegate(delegate: self)
+    }
+}
+
+extension HomeViewController: SignInScreenProtocol {
+    func actionRegisterButton() {
+        print(#function)
+    }
+    
+    func actionForgotThePasswordButton() {
+        print(#function)
+    }
+    
+    func actionSignInButtonButton() {
+        let signUpVC: SignUpViewController = SignUpViewController()
+        navigationController?.pushViewController(signUpVC, animated: true)
     }
 }
 

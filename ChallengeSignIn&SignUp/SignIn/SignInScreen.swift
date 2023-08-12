@@ -7,7 +7,18 @@
 
 import UIKit
 
+protocol SignInScreenProtocol: AnyObject {
+    func actionRegisterButton()
+    func actionForgotThePasswordButton()
+    func actionSignInButtonButton()
+}
+
 class SignInScreen: UIView {
+    
+    private weak var delegate: SignInScreenProtocol?
+    func delegate(delegate: SignInScreenProtocol?) {
+        self.delegate = delegate
+    }
     
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -70,7 +81,7 @@ class SignInScreen: UIView {
     }()
     
     @objc func tappedForgotThePasswordButton() {
-        
+        delegate?.actionForgotThePasswordButton()
     }
     
     private lazy var signInButton: UIButton = {
@@ -87,7 +98,7 @@ class SignInScreen: UIView {
     }()
     
     @objc func tappedSignInButtonButton(){
-        
+        delegate?.actionSignInButtonButton()
     }
     
     public lazy var registerButton: UIButton = {
@@ -101,7 +112,7 @@ class SignInScreen: UIView {
     }()
     
     @objc func tappedRegisterButton(){
-        
+        delegate?.actionRegisterButton()
     }
     
     override init(frame: CGRect) {
