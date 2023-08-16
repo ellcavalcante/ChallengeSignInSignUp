@@ -61,6 +61,93 @@ class SignUpScreen: UIView {
         return label
     }()
     
+    private let stackViewTextFields: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.alignment = .fill
+        view.distribution = .fillEqually
+        view.spacing = 8
+        return view
+    }()
+    
+    lazy var firstNameTextField: UITextField = {
+        let name = UITextField()
+        name.translatesAutoresizingMaskIntoConstraints = false
+        name.autocorrectionType = .no
+        name.backgroundColor = .white
+        name.borderStyle = .roundedRect
+        name.autocapitalizationType = .none
+        name.keyboardType = .default
+        name.placeholder = "Primeiro nome"
+        name.textColor = .darkGray
+        name.clearButtonMode = .whileEditing
+        name.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        return name
+    }()
+    
+    lazy var lastNameTextField: UITextField = {
+        let lastName = UITextField()
+        lastName.translatesAutoresizingMaskIntoConstraints = false
+        lastName.autocorrectionType = .no
+        lastName.backgroundColor = .white
+        lastName.borderStyle = .roundedRect
+        lastName.autocapitalizationType = .none
+        lastName.keyboardType = .default
+        lastName.placeholder = "Último nome"
+        lastName.textColor = .darkGray
+        lastName.clearButtonMode = .whileEditing
+        lastName.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        return lastName
+    }()
+    
+    lazy var emailTextField: UITextField = {
+        let email = UITextField()
+        email.translatesAutoresizingMaskIntoConstraints = false
+        email.autocorrectionType = .no
+        email.backgroundColor = .white
+        email.borderStyle = .roundedRect
+        email.autocapitalizationType = .none
+        email.keyboardType = .emailAddress
+        email.placeholder = "Email"
+        email.textColor = .darkGray
+        email.clearButtonMode = .whileEditing
+        email.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        return email
+    }()
+    
+    lazy var passwordTextField: UITextField = {
+        let password = UITextField()
+        password.translatesAutoresizingMaskIntoConstraints = false
+        password.autocorrectionType = .no
+        password.backgroundColor = .white
+        password.borderStyle = .roundedRect
+        password.autocapitalizationType = .none
+        password.keyboardType = .default
+        password.placeholder = "Senha"
+        password.isSecureTextEntry = true
+        password.textColor = .darkGray
+        password.clearButtonMode = .whileEditing
+        password.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        return password
+    }()
+    
+    lazy var confirmPasswordTextField: UITextField = {
+        let confirmPassword = UITextField()
+        confirmPassword.translatesAutoresizingMaskIntoConstraints = false
+        confirmPassword.autocorrectionType = .no
+        confirmPassword.backgroundColor = .white
+        confirmPassword.borderStyle = .roundedRect
+        confirmPassword.autocapitalizationType = .none
+        confirmPassword.keyboardType = .default
+        confirmPassword.placeholder = "Confirmar senha"
+        confirmPassword.isSecureTextEntry = true
+        confirmPassword.textColor = .darkGray
+        confirmPassword.clearButtonMode = .whileEditing
+        confirmPassword.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        return confirmPassword
+    }()
+    
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +164,7 @@ class SignUpScreen: UIView {
     @objc func tappedSignUpButton(){
         delegate?.actionSignUpButton()
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview()
@@ -91,12 +178,22 @@ class SignUpScreen: UIView {
         backgroundColor = .white
     }
     
+    private func configureStackView() {
+        stackViewTextFields.addArrangedSubview(firstNameTextField)
+        stackViewTextFields.addArrangedSubview(lastNameTextField)
+        stackViewTextFields.addArrangedSubview(emailTextField)
+        stackViewTextFields.addArrangedSubview(passwordTextField)
+        stackViewTextFields.addArrangedSubview(confirmPasswordTextField)
+    }
+    
     private func addSubview() {
         addSubview(backButton)
         addSubview(titleLabel)
         addSubview(subTitleLabel)
         addSubview(bottomTitleLabel)
         addSubview(signUpButton)
+        addSubview(stackViewTextFields)
+        configureStackView()
         setUpConstraints()
         background()
     }
@@ -119,6 +216,11 @@ class SignUpScreen: UIView {
             bottomTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
             bottomTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
             bottomTitleLabel.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -12),
+            
+            stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 37),
+            stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+            stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            stackViewTextFields.bottomAnchor.constraint(equalTo: bottomTitleLabel.topAnchor, constant: -181),
             
             signUpButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -52),
             signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),

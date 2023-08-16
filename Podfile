@@ -7,6 +7,8 @@ target 'ChallengeSignIn&SignUp' do
 
   # Pods for ChallengeSignIn&SignUp
 
+	pod 'FirebaseAuth'
+
   target 'ChallengeSignIn&SignUpTests' do
     inherit! :search_paths
     # Pods for testing

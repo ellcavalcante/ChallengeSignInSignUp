@@ -15,7 +15,7 @@ class SignUpViewController: UIViewController {
         screen = SignUpScreen()
         view = screen
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate(delegate: self)

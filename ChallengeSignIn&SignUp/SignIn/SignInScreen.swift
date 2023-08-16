@@ -56,18 +56,18 @@ class SignInScreen: UIView {
     }()
     
     public lazy var passwordTextField: UITextField = {
-        let email = UITextField()
-        email.translatesAutoresizingMaskIntoConstraints = false
-        email.autocorrectionType = .no
-        email.backgroundColor = .white
-        email.borderStyle = .roundedRect
-        email.autocapitalizationType = .none
-        email.keyboardType = .default
-        email.placeholder = "Digite sua senha:"
-        email.textColor = .darkGray
-        email.clearButtonMode = .whileEditing
-        email.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
-        return email
+        let password = UITextField()
+        password.translatesAutoresizingMaskIntoConstraints = false
+        password.autocorrectionType = .no
+        password.backgroundColor = .white
+        password.borderStyle = .roundedRect
+        password.autocapitalizationType = .none
+        password.keyboardType = .default
+        password.placeholder = "Digite sua senha:"
+        password.textColor = .darkGray
+        password.clearButtonMode = .whileEditing
+        password.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        return password
     }()
     
     public lazy var esqueceuSenhaButton: UIButton = {
@@ -101,15 +101,32 @@ class SignInScreen: UIView {
         delegate?.actionSignInButtonButton()
     }
     
+    public lazy var view: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    public lazy var sideTextButton: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Não tem conta? "
+        label.textAlignment = .left
+        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 15)
+        return label
+    }()
+    
     public lazy var registerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Não tem conta? Criar conta", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Criar conta", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        button.setTitleColor(UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1.0), for: .normal)
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
         return button
     }()
+    
     
     @objc func tappedRegisterButton(){
         delegate?.actionRegisterButton()
@@ -135,7 +152,9 @@ class SignInScreen: UIView {
         addSubview(passwordTextField)
         addSubview(esqueceuSenhaButton)
         addSubview(signInButton)
-        addSubview(registerButton)
+        addSubview(view)
+        view.addSubview(sideTextButton)
+        view.addSubview(registerButton)
         setUpConstraints()
         backgroundColor()
     }
@@ -165,16 +184,25 @@ class SignInScreen: UIView {
             esqueceuSenhaButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 255),
             esqueceuSenhaButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
             
+            view.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 235),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54),
+            view.heightAnchor.constraint(equalToConstant: 14),
+
+            sideTextButton.topAnchor.constraint(equalTo: view.topAnchor),
+            sideTextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sideTextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
             signInButton.topAnchor.constraint(equalTo: esqueceuSenhaButton.bottomAnchor, constant: 22),
             signInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             signInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
             signInButton.heightAnchor.constraint(equalToConstant: 50),
             
-            registerButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54),
-            registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
-            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100),
-            
-            
+            registerButton.topAnchor.constraint(equalTo: view.topAnchor),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
         ])
     }
 }
