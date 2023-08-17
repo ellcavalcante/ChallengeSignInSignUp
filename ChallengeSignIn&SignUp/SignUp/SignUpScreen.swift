@@ -54,10 +54,14 @@ class SignUpScreen: UIView {
     private lazy var bottomTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ao criar a conta, você concorda com nossos  termos e condições de uso"
-        label.textColor = .black
+        let myAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15) as Any]
+        let myString = NSMutableAttributedString(string: "Ao criar a conta, você concorda com nossos", attributes: myAttributes)
+        let myAttributes2 = [NSAttributedString.Key.foregroundColor: UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1.0), NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15) as Any]
+        let myString2 = NSAttributedString(string: " termos e condições de uso", attributes: myAttributes2)
+        myString.append(myString2)
+        label.attributedText = myString
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.textAlignment = .center
         return label
     }()
     
@@ -165,6 +169,12 @@ class SignUpScreen: UIView {
         delegate?.actionSignUpButton()
     }
     
+    public lazy var view: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview()
@@ -193,6 +203,8 @@ class SignUpScreen: UIView {
         addSubview(bottomTitleLabel)
         addSubview(signUpButton)
         addSubview(stackViewTextFields)
+        addSubview(view)
+        view.addSubview(bottomTitleLabel)
         configureStackView()
         setUpConstraints()
         background()
@@ -211,16 +223,20 @@ class SignUpScreen: UIView {
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 42),
             subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             subTitleLabel.widthAnchor.constraint(equalToConstant: 346),
+
+            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -114),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65),
+            view.heightAnchor.constraint(equalToConstant: 36),
             
-            bottomTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bottomTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
-            bottomTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
-            bottomTitleLabel.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -12),
+            bottomTitleLabel.topAnchor.constraint(equalTo: view.topAnchor),
+            bottomTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 37),
             stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
             stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
-            stackViewTextFields.bottomAnchor.constraint(equalTo: bottomTitleLabel.topAnchor, constant: -181),
+            stackViewTextFields.heightAnchor.constraint(equalToConstant: 307),
             
             signUpButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -52),
             signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),

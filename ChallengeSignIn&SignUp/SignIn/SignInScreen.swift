@@ -84,7 +84,7 @@ class SignInScreen: UIView {
         delegate?.actionForgotThePasswordButton()
     }
     
-    private lazy var signInButton: UIButton = {
+    public lazy var signInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("ENTRAR", for: .normal)
@@ -130,6 +130,11 @@ class SignInScreen: UIView {
     
     @objc func tappedRegisterButton(){
         delegate?.actionRegisterButton()
+    }
+    
+    func configTextFieldDelegate(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     
     override init(frame: CGRect) {

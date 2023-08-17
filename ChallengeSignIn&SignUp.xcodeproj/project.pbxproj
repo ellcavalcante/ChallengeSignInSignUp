@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B56E2632A8C1315006561DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E2622A8C1315006561DE /* GoogleService-Info.plist */; };
 		0BDEAB4C2A870F8D006FFD9D /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDEAB4B2A870F8D006FFD9D /* SignUpScreen.swift */; };
 		0BDEAB4E2A870FB2006FFD9D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDEAB4D2A870FB2006FFD9D /* SignUpViewController.swift */; };
 		0BF5799B2A8456D500C0E16F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5799A2A8456D500C0E16F /* AppDelegate.swift */; };
@@ -42,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B56E2622A8C1315006561DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0BDEAB4B2A870F8D006FFD9D /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		0BDEAB4D2A870FB2006FFD9D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0BF579972A8456D500C0E16F /* ChallengeSignIn&SignUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChallengeSignIn&SignUp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +129,6 @@
 		0BF579992A8456D500C0E16F /* ChallengeSignIn&SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				0B56E2622A8C1315006561DE /* GoogleService-Info.plist */,
 				0BF579A82A8456D500C0E16F /* Info.plist */,
 				0BDEAB4A2A870F6F006FFD9D /* SignUp */,
 				0BF579CC2A8457E600C0E16F /* SignIn */,
@@ -219,7 +216,6 @@
 				0BF579932A8456D500C0E16F /* Sources */,
 				0BF579942A8456D500C0E16F /* Frameworks */,
 				0BF579952A8456D500C0E16F /* Resources */,
-				471CD32A1E232049DBE0630D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,7 +253,6 @@
 				0BF579B32A8456D600C0E16F /* Sources */,
 				0BF579B42A8456D600C0E16F /* Frameworks */,
 				0BF579B52A8456D600C0E16F /* Resources */,
-				153E34EAF7BF7B1C7C9F8792 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,7 +312,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B56E2632A8C1315006561DE /* GoogleService-Info.plist in Resources */,
 				0BF579A72A8456D500C0E16F /* LaunchScreen.storyboard in Resources */,
 				0BF579A42A8456D500C0E16F /* Assets.xcassets in Resources */,
 			);
@@ -340,23 +334,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		153E34EAF7BF7B1C7C9F8792 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		15EBC9CFDA99847D621619DF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -421,23 +398,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		471CD32A1E232049DBE0630D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp/Pods-ChallengeSignIn&SignUp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp/Pods-ChallengeSignIn&SignUp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp/Pods-ChallengeSignIn&SignUp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

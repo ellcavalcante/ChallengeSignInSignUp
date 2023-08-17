@@ -19,6 +19,22 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signInScreen?.delegate(delegate: self)
+        signInScreen?.configTextFieldDelegate(delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    func validaTextFields() {
+        
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        
     }
 }
 
@@ -32,8 +48,16 @@ extension HomeViewController: SignInScreenProtocol {
     }
     
     func actionSignInButtonButton() {
-        let signUpVC: SignUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpVC, animated: true)
+        
+        let email: String = signInScreen?.emailTextField.text ?? ""
+        let password: String = signInScreen?.passwordTextField.text ?? ""
+        
+        if email == "meu@email.com" && password == "Teste@123" {
+            let signUpVC: SignUpViewController = SignUpViewController()
+            navigationController?.pushViewController(signUpVC, animated: true)
+        } else {
+            
+        }
     }
 }
 
