@@ -194,11 +194,11 @@ class SignInScreen: UIView {
             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100),
             view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54),
             view.heightAnchor.constraint(equalToConstant: 14),
-
+            
             sideTextButton.topAnchor.constraint(equalTo: view.topAnchor),
             sideTextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sideTextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
+            
             signInButton.topAnchor.constraint(equalTo: esqueceuSenhaButton.bottomAnchor, constant: 22),
             signInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             signInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
@@ -207,7 +207,7 @@ class SignInScreen: UIView {
             registerButton.topAnchor.constraint(equalTo: view.topAnchor),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
+            
         ])
     }
 }
