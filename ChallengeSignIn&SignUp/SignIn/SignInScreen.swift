@@ -63,6 +63,7 @@ class SignInScreen: UIView {
         password.borderStyle = .roundedRect
         password.autocapitalizationType = .none
         password.keyboardType = .default
+        password.isSecureTextEntry = true
         password.placeholder = "Digite sua senha:"
         password.textColor = .darkGray
         password.clearButtonMode = .whileEditing

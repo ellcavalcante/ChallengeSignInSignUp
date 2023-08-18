@@ -75,7 +75,7 @@ class SignUpScreen: UIView {
         return view
     }()
     
-    lazy var firstNameTextField: UITextField = {
+    public lazy var firstNameTextField: UITextField = {
         let name = UITextField()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.autocorrectionType = .no
@@ -90,7 +90,7 @@ class SignUpScreen: UIView {
         return name
     }()
     
-    lazy var lastNameTextField: UITextField = {
+    public lazy var lastNameTextField: UITextField = {
         let lastName = UITextField()
         lastName.translatesAutoresizingMaskIntoConstraints = false
         lastName.autocorrectionType = .no
@@ -105,7 +105,7 @@ class SignUpScreen: UIView {
         return lastName
     }()
     
-    lazy var emailTextField: UITextField = {
+    public lazy var emailTextField: UITextField = {
         let email = UITextField()
         email.translatesAutoresizingMaskIntoConstraints = false
         email.autocorrectionType = .no
@@ -120,7 +120,7 @@ class SignUpScreen: UIView {
         return email
     }()
     
-    lazy var passwordTextField: UITextField = {
+    public lazy var passwordTextField: UITextField = {
         let password = UITextField()
         password.translatesAutoresizingMaskIntoConstraints = false
         password.autocorrectionType = .no
@@ -136,7 +136,7 @@ class SignUpScreen: UIView {
         return password
     }()
     
-    lazy var confirmPasswordTextField: UITextField = {
+    public lazy var confirmPasswordTextField: UITextField = {
         let confirmPassword = UITextField()
         confirmPassword.translatesAutoresizingMaskIntoConstraints = false
         confirmPassword.autocorrectionType = .no
@@ -152,7 +152,7 @@ class SignUpScreen: UIView {
         return confirmPassword
     }()
     
-    private lazy var signUpButton: UIButton = {
+    public lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("CRIAR CONTA", for: .normal)
@@ -169,7 +169,7 @@ class SignUpScreen: UIView {
         delegate?.actionSignUpButton()
     }
     
-    public lazy var view: UIView = {
+    private lazy var view: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -208,6 +208,40 @@ class SignUpScreen: UIView {
         configureStackView()
         setUpConstraints()
         background()
+    }
+    
+    public func validaTextFields() {
+        let firstName: String = firstNameTextField.text ?? ""
+        let lastName: String = lastNameTextField.text ?? ""
+        let email: String = emailTextField.text ?? ""
+        let password: String = passwordTextField.text ?? ""
+        let confirmPassword: String = confirmPasswordTextField.text ?? ""
+        
+        if !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
+            configButtonEnable(true)
+        } else {
+            configButtonEnable(false)
+        }
+    }
+    
+    public func configButtonEnable(_ enable: Bool) {
+        if enable {
+            signUpButton.setTitleColor(.white, for: .normal)
+            signUpButton.backgroundColor = UIColor(red: 255/255, green: 167/255, blue: 38/255, alpha: 1.0)
+            signUpButton.isEnabled = true
+        } else {
+            signUpButton.setTitleColor(.white, for: .normal)
+            signUpButton.backgroundColor = UIColor(red: 202/255, green: 202/255, blue: 202/255, alpha: 1.0)
+            signUpButton.isEnabled = false
+        }
+    }
+    
+    public func configTextFieldDelegate(delegate: UITextFieldDelegate) {
+        firstNameTextField.delegate = delegate
+        lastNameTextField.delegate = delegate
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
+        confirmPasswordTextField.delegate = delegate
     }
     
     private func setUpConstraints() {
