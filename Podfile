@@ -6,6 +6,7 @@ target 'ChallengeSignIn&SignUp' do
   use_frameworks!
 
   # Pods for ChallengeSignIn&SignUp
+	pod 'lottie-ios'
 
   target 'ChallengeSignIn&SignUpTests' do
     inherit! :search_paths

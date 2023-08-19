@@ -75,14 +75,14 @@ extension SignInViewController: SignInScreenProtocol {
     }
     
     func actionSignInButtonButton() {
-        
+        let home: HomeViewController = HomeViewController()
         let email: String = signInScreen?.emailTextField.text ?? ""
         let password: String = signInScreen?.passwordTextField.text ?? ""
         
         if email == "meu@email.com" && password == "Teste@123" {
-           
             signInScreen?.emailTextField.text = ""
             signInScreen?.passwordTextField.text = ""
+            navigationController?.pushViewController(home, animated: true)
         } else {
             let alert = UIAlertController(title: "SignIn", message: "Entre com e-mail e senha válidos", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))

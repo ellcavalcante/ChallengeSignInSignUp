@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import WebKit
 
 protocol SignUpScreenProtocol: AnyObject {
     func actionBackButton()
     func actionSignUpButton()
+    func actiontapGesture()
 }
 
 class SignUpScreen: UIView {
@@ -64,6 +66,19 @@ class SignUpScreen: UIView {
         label.textAlignment = .center
         return label
     }()
+    
+    @objc func tappedBottomTitleLabel(){
+        delegate?.actionSignUpButton()
+    }
+    
+    public func addtap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func tapGesture(_ sender: UITapGestureRecognizer) {
+        delegate?.actiontapGesture()
+    }
     
     private let stackViewTextFields: UIStackView = {
         let view = UIStackView()
@@ -217,8 +232,11 @@ class SignUpScreen: UIView {
         let password: String = passwordTextField.text ?? ""
         let confirmPassword: String = confirmPasswordTextField.text ?? ""
         
-        if !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
-            configButtonEnable(true)
+        
+        if email == "meu@email.com" && password == confirmPassword && email.count > 4 {
+            if !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
+                configButtonEnable(true)
+            }
         } else {
             configButtonEnable(false)
         }
@@ -257,7 +275,7 @@ class SignUpScreen: UIView {
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 42),
             subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             subTitleLabel.widthAnchor.constraint(equalToConstant: 346),
-
+            
             view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -114),
             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65),
             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65),

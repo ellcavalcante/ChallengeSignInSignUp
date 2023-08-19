@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0BB8A3172A8FF86A00C48FC2 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3162A8FF86A00C48FC2 /* HomeScreen.swift */; };
 		0BB8A3192A8FF8A500C48FC2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3182A8FF8A500C48FC2 /* HomeViewController.swift */; };
+		0BB8A31D2A90092800C48FC2 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8A31B2A90092800C48FC2 /* welcome.json */; };
+		0BB8A31E2A90092800C48FC2 /* person.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8A31C2A90092800C48FC2 /* person.json */; };
+		0BB8A3212A90483D00C48FC2 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8A3202A90483D00C48FC2 /* WebViewViewController.swift */; };
 		0BDEAB4C2A870F8D006FFD9D /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDEAB4B2A870F8D006FFD9D /* SignUpScreen.swift */; };
 		0BDEAB4E2A870FB2006FFD9D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDEAB4D2A870FB2006FFD9D /* SignUpViewController.swift */; };
 		0BF5799B2A8456D500C0E16F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5799A2A8456D500C0E16F /* AppDelegate.swift */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		0BB8A3162A8FF86A00C48FC2 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0BB8A3182A8FF8A500C48FC2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0BB8A31B2A90092800C48FC2 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
+		0BB8A31C2A90092800C48FC2 /* person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = person.json; sourceTree = "<group>"; };
+		0BB8A3202A90483D00C48FC2 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		0BDEAB4B2A870F8D006FFD9D /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		0BDEAB4D2A870FB2006FFD9D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0BF579972A8456D500C0E16F /* ChallengeSignIn&SignUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChallengeSignIn&SignUp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +114,23 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		0BB8A31A2A90091A00C48FC2 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				0BB8A31C2A90092800C48FC2 /* person.json */,
+				0BB8A31B2A90092800C48FC2 /* welcome.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		0BB8A31F2A90482900C48FC2 /* VewView */ = {
+			isa = PBXGroup;
+			children = (
+				0BB8A3202A90483D00C48FC2 /* WebViewViewController.swift */,
+			);
+			path = VewView;
+			sourceTree = "<group>";
+		};
 		0BDEAB4A2A870F6F006FFD9D /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				0BF579A82A8456D500C0E16F /* Info.plist */,
+				0BB8A31F2A90482900C48FC2 /* VewView */,
+				0BB8A31A2A90091A00C48FC2 /* Json */,
 				0BB8A3152A8FF80100C48FC2 /* Home */,
 				0BDEAB4A2A870F6F006FFD9D /* SignUp */,
 				0BF579CC2A8457E600C0E16F /* SignIn */,
@@ -230,6 +255,7 @@
 				0BF579932A8456D500C0E16F /* Sources */,
 				0BF579942A8456D500C0E16F /* Frameworks */,
 				0BF579952A8456D500C0E16F /* Resources */,
+				3C1A0B5877B708DDFDAD15ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +293,7 @@
 				0BF579B32A8456D600C0E16F /* Sources */,
 				0BF579B42A8456D600C0E16F /* Frameworks */,
 				0BF579B52A8456D600C0E16F /* Resources */,
+				1FA158E4CE699A6B4C3C6A20 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,7 +353,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB8A31D2A90092800C48FC2 /* welcome.json in Resources */,
 				0BF579A72A8456D500C0E16F /* LaunchScreen.storyboard in Resources */,
+				0BB8A31E2A90092800C48FC2 /* person.json in Resources */,
 				0BF579A42A8456D500C0E16F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +399,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1FA158E4CE699A6B4C3C6A20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests/Pods-ChallengeSignIn&SignUp-ChallengeSignIn&SignUpUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2DF453650FACAA93DC15C073 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,6 +436,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C1A0B5877B708DDFDAD15ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp/Pods-ChallengeSignIn&SignUp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp/Pods-ChallengeSignIn&SignUp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChallengeSignIn&SignUp/Pods-ChallengeSignIn&SignUp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		45290B0CA538C4E3E25C2514 /* [CP] Check Pods Manifest.lock */ = {
@@ -428,6 +491,7 @@
 				0BF5799F2A8456D500C0E16F /* SignInViewController.swift in Sources */,
 				0BF579CE2A84581400C0E16F /* SignInScreen.swift in Sources */,
 				0BF5799B2A8456D500C0E16F /* AppDelegate.swift in Sources */,
+				0BB8A3212A90483D00C48FC2 /* WebViewViewController.swift in Sources */,
 				0BF5799D2A8456D500C0E16F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

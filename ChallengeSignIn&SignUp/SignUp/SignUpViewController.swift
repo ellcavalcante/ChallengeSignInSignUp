@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         screen?.configTextFieldDelegate(delegate: self)
+        screen?.addtap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +31,12 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: SignUpScreenProtocol {
+    func actiontapGesture() {
+        let home: WebViewViewController = WebViewViewController()
+        home.modalPresentationStyle = .formSheet
+        self.present(home, animated: true)
+    }
+    
     func actionBackButton() {
         navigationController?.popViewController(animated: true)
     }
@@ -43,14 +50,16 @@ extension SignUpViewController: SignUpScreenProtocol {
         screen?.confirmPasswordTextField.text = ""
         
         let alert = UIAlertController(title: "Sucesso", message: "Cadastro foi realizado com sucesso", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        screen?.firstNameTextField.becomeFirstResponder()
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.screen?.firstNameTextField.becomeFirstResponder()
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
         present(alert, animated: true)
-        navigationController?.popToRootViewController(animated: true)
     }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         screen?.validaTextFields()
     }
