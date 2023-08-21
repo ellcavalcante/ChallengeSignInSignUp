@@ -24,3 +24,4 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
         self.webView.load(URLRequest(url: url))
     }
 }
+

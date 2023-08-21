@@ -233,8 +233,9 @@ class SignUpScreen: UIView {
         let confirmPassword: String = confirmPasswordTextField.text ?? ""
         
         
-        if email == "meu@email.com" && password == confirmPassword {
-            if (!firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty) {
+        
+        if (!firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty) {
+            if email == "meu@email.com" && password == confirmPassword {
                 if password.count > 4 && confirmPassword.count > 4 {
                     configButtonEnable(true)
                 }
