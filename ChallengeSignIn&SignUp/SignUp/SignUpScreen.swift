@@ -101,6 +101,7 @@ class SignUpScreen: UIView {
         name.placeholder = "Primeiro nome"
         name.textColor = .darkGray
         name.clearButtonMode = .whileEditing
+        name.addTarget(self, action: #selector(<#T##@objc method#>), for: .editingChanged)
         name.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return name
     }()

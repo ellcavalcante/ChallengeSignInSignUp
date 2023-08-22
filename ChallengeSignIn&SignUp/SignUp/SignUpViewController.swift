@@ -60,6 +60,10 @@ extension SignUpViewController: SignUpScreenProtocol {
 
 extension SignUpViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        <#code#>
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         screen?.validaTextFields()
     }
