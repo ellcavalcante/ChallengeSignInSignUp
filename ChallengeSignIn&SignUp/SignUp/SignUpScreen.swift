@@ -21,6 +21,12 @@ class SignUpScreen: UIView {
         self.delegate = delegate
     }
     
+//    public lazy var scrollView: UIScrollView = {
+//        let scroll = UIScrollView()
+//        scroll.translatesAutoresizingMaskIntoConstraints = false
+//        return scroll
+//    }()
+    
     private lazy var backButton: UIButton = {
         let bButton = UIButton()
         bButton.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +77,7 @@ class SignUpScreen: UIView {
         delegate?.actionSignUpButton()
     }
     
-    public func addtap() {
+    public func tappedViewBottonScreen() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         self.view.addGestureRecognizer(tap)
     }
@@ -101,7 +107,7 @@ class SignUpScreen: UIView {
         name.placeholder = "Primeiro nome"
         name.textColor = .darkGray
         name.clearButtonMode = .whileEditing
-        name.addTarget(self, action: #selector(<#T##@objc method#>), for: .editingChanged)
+        name.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         name.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return name
     }()
@@ -117,6 +123,7 @@ class SignUpScreen: UIView {
         lastName.placeholder = "Último nome"
         lastName.textColor = .darkGray
         lastName.clearButtonMode = .whileEditing
+        lastName.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         lastName.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return lastName
     }()
@@ -132,6 +139,7 @@ class SignUpScreen: UIView {
         email.placeholder = "Email"
         email.textColor = .darkGray
         email.clearButtonMode = .whileEditing
+        email.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         email.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return email
     }()
@@ -148,6 +156,7 @@ class SignUpScreen: UIView {
         password.isSecureTextEntry = true
         password.textColor = .darkGray
         password.clearButtonMode = .whileEditing
+        password.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         password.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return password
     }()
@@ -164,6 +173,7 @@ class SignUpScreen: UIView {
         confirmPassword.isSecureTextEntry = true
         confirmPassword.textColor = .darkGray
         confirmPassword.clearButtonMode = .whileEditing
+        confirmPassword.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         confirmPassword.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return confirmPassword
     }()
@@ -213,6 +223,7 @@ class SignUpScreen: UIView {
     }
     
     private func addSubview() {
+//        addSubview(scrollView)
         addSubview(backButton)
         addSubview(titleLabel)
         addSubview(subTitleLabel)
@@ -226,13 +237,12 @@ class SignUpScreen: UIView {
         background()
     }
     
-    public func validaTextFields() {
+    @objc func validaTextFields() {
         let firstName: String = firstNameTextField.text ?? ""
         let lastName: String = lastNameTextField.text ?? ""
         let email: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
         let confirmPassword: String = confirmPasswordTextField.text ?? ""
-        
         
         
         if (!firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty) {

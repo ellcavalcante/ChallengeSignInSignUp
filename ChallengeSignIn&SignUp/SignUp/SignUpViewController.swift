@@ -20,13 +20,50 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         screen?.configTextFieldDelegate(delegate: self)
-        screen?.addtap()
+        screen?.tappedViewBottonScreen()
+        screen?.validaTextFields()
+        settings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         screen?.configButtonEnable(false)
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        NotificationCenter.default.removeObserver(self)
+//    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    @objc func keyboardWillShow(_ notification: Notification) {
+//        let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+//        guard let keyboardSize = (keyboardFrame as? NSValue)?.cgRectValue else { return }
+//
+//        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+//
+//        self.screen?.scrollView.contentInset = contentInsets
+//        self.screen?.scrollView.scrollIndicatorInsets = contentInsets
+//    }
+//
+//    @objc func keyboardWillHide(_ notification: Notification) {
+//        self.screen?.scrollView.contentInset = .zero
+//        self.screen?.scrollView.scrollIndicatorInsets = .zero
+//    }
+    
+    private func settings() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+            view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -60,11 +97,9 @@ extension SignUpViewController: SignUpScreenProtocol {
 
 extension SignUpViewController: UITextFieldDelegate {
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        <#code#>
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
+        
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        screen?.validaTextFields()
-    }
 }

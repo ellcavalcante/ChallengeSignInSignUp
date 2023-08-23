@@ -20,14 +20,22 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         signInScreen?.delegate(delegate: self)
         signInScreen?.configTextFieldDelegate(delegate: self)
+        settings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         signInScreen?.emailTextField.text = ""
         signInScreen?.passwordTextField.text = ""
-        signInScreen?.emailTextField.becomeFirstResponder()
-        
+    }
+    
+    private func settings() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+            view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -44,8 +52,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
-        return true
+        textField.resignFirstResponder()
     }
 }
 
@@ -75,6 +82,7 @@ extension SignInViewController: SignInScreenProtocol {
     }
     
     func actionSignInButtonButton() {
+        signInScreen?.emailTextField.becomeFirstResponder()
         let home: HomeViewController = HomeViewController()
         let email: String = signInScreen?.emailTextField.text ?? ""
         let password: String = signInScreen?.passwordTextField.text ?? ""
