@@ -21,11 +21,12 @@ class SignUpScreen: UIView {
         self.delegate = delegate
     }
     
-//    public lazy var scrollView: UIScrollView = {
-//        let scroll = UIScrollView()
-//        scroll.translatesAutoresizingMaskIntoConstraints = false
-//        return scroll
-//    }()
+    public lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.backgroundColor = .cyan
+        return scroll
+    }()
     
     private lazy var backButton: UIButton = {
         let bButton = UIButton()
@@ -223,7 +224,7 @@ class SignUpScreen: UIView {
     }
     
     private func addSubview() {
-//        addSubview(scrollView)
+        addSubview(scrollView)
         addSubview(backButton)
         addSubview(titleLabel)
         addSubview(subTitleLabel)
@@ -308,6 +309,13 @@ class SignUpScreen: UIView {
             signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
             signUpButton.heightAnchor.constraint(equalToConstant: 50),
+
+
         ])
     }
 }
+
+
+
+
+
