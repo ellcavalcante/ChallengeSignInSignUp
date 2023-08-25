@@ -21,11 +21,16 @@ class SignUpScreen: UIView {
         self.delegate = delegate
     }
     
-    public lazy var scrollView: UIScrollView = {
+    public lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.backgroundColor = .cyan
         return scroll
+    }()
+    
+    private lazy var conteinerView: UIView = {
+        let conteiner = UIView()
+        conteiner.translatesAutoresizingMaskIntoConstraints = false
+        return conteiner
     }()
     
     private lazy var backButton: UIButton = {
@@ -224,15 +229,15 @@ class SignUpScreen: UIView {
     }
     
     private func addSubview() {
-        addSubview(scrollView)
-        addSubview(backButton)
-        addSubview(titleLabel)
-        addSubview(subTitleLabel)
-        addSubview(bottomTitleLabel)
-        addSubview(signUpButton)
-        addSubview(stackViewTextFields)
-        addSubview(view)
+        addSubview(scroll)
+        scroll.addSubview(conteinerView)
+        conteinerView.addSubview(backButton)
+        conteinerView.addSubview(titleLabel)
+        conteinerView.addSubview(subTitleLabel)
+        conteinerView.addSubview(stackViewTextFields)
+        conteinerView.addSubview(view)
         view.addSubview(bottomTitleLabel)
+        conteinerView.addSubview(signUpButton)
         configureStackView()
         setUpConstraints()
         background()
@@ -280,18 +285,33 @@ class SignUpScreen: UIView {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             
-            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 26),
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17),
+            scroll.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scroll.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scroll.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            conteinerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            conteinerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            conteinerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            conteinerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            backButton.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 26),
+            backButton.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 17),
             
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 26),
+            titleLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 26),
             titleLabel.widthAnchor.constraint(equalToConstant: 85),
             
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 42),
             subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             subTitleLabel.widthAnchor.constraint(equalToConstant: 346),
             
-            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -114),
+            stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 37),
+            stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+            stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            stackViewTextFields.heightAnchor.constraint(equalToConstant: 307),
+            
+            view.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -12),
             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65),
             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65),
             view.heightAnchor.constraint(equalToConstant: 36),
@@ -299,18 +319,12 @@ class SignUpScreen: UIView {
             bottomTitleLabel.topAnchor.constraint(equalTo: view.topAnchor),
             bottomTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 37),
-            stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
-            stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
-            stackViewTextFields.heightAnchor.constraint(equalToConstant: 307),
+            bottomTitleLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             signUpButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -52),
             signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
             signUpButton.heightAnchor.constraint(equalToConstant: 50),
-
-
         ])
     }
 }

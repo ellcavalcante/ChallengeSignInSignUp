@@ -41,7 +41,6 @@ class SignUpViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
 
     @objc func keyboardWillShow(_ notification: Notification) {
         let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
@@ -49,16 +48,14 @@ class SignUpViewController: UIViewController {
 
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
 
-        self.screen?.scrollView.contentInset = contentInsets
-        self.screen?.scrollView.scrollIndicatorInsets = contentInsets
+        self.screen?.scroll.contentInset = contentInsets
+        self.screen?.scroll.scrollIndicatorInsets = contentInsets
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        self.screen?.scrollView.contentInset = .zero
-        self.screen?.scrollView.scrollIndicatorInsets = .zero
+        self.screen?.scroll.contentInset = .zero
+        self.screen?.scroll.scrollIndicatorInsets = .zero
     }
-    
-    
     
     private func settings() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
