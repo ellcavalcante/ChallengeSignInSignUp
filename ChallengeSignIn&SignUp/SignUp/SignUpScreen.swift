@@ -108,6 +108,7 @@ class SignUpScreen: UIView {
         name.autocorrectionType = .no
         name.backgroundColor = .white
         name.borderStyle = .roundedRect
+        name.layer.borderColor = .init(gray: 1.0, alpha: 1.0)
         name.autocapitalizationType = .none
         name.keyboardType = .default
         name.placeholder = "Primeiro nome"
@@ -124,6 +125,7 @@ class SignUpScreen: UIView {
         lastName.autocorrectionType = .no
         lastName.backgroundColor = .white
         lastName.borderStyle = .roundedRect
+        lastName.layer.borderColor = .init(gray: 1.0, alpha: 1.0)
         lastName.autocapitalizationType = .none
         lastName.keyboardType = .default
         lastName.placeholder = "Último nome"
@@ -161,7 +163,6 @@ class SignUpScreen: UIView {
         password.placeholder = "Senha"
         password.isSecureTextEntry = true
         password.textColor = .darkGray
-        password.clearButtonMode = .whileEditing
         password.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         password.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return password
@@ -178,7 +179,6 @@ class SignUpScreen: UIView {
         confirmPassword.placeholder = "Confirmar senha"
         confirmPassword.isSecureTextEntry = true
         confirmPassword.textColor = .darkGray
-        confirmPassword.clearButtonMode = .whileEditing
         confirmPassword.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
         confirmPassword.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return confirmPassword
@@ -252,9 +252,11 @@ class SignUpScreen: UIView {
         
         
         if (!firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty) {
-            if email == "meu@email.com" && password == confirmPassword {
-                if password.count > 4 && confirmPassword.count > 4 {
-                    configButtonEnable(true)
+            if email == "meu@email.com" {
+                if password == confirmPassword {
+                    if password.count > 4 && confirmPassword.count > 4 {
+                        configButtonEnable(true)
+                    }
                 }
             }
         } else {
@@ -312,8 +314,8 @@ class SignUpScreen: UIView {
             stackViewTextFields.heightAnchor.constraint(equalToConstant: 307),
             
             view.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -12),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
             view.heightAnchor.constraint(equalToConstant: 36),
             
             bottomTitleLabel.topAnchor.constraint(equalTo: view.topAnchor),

@@ -40,6 +40,16 @@ class SignInScreen: UIView {
         return label
     }()
     
+    private let stackViewTextFields: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.alignment = .fill
+        view.distribution = .fillEqually
+        view.spacing = 8
+        return view
+    }()
+    
     lazy var emailTextField: UITextField = {
         let email = UITextField()
         email.translatesAutoresizingMaskIntoConstraints = false
@@ -66,6 +76,7 @@ class SignInScreen: UIView {
         password.isSecureTextEntry = true
         password.placeholder = "Digite sua senha:"
         password.textColor = .darkGray
+        password.backgroundColor = .cyan
         password.clearButtonMode = .whileEditing
         password.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return password
@@ -151,11 +162,15 @@ class SignInScreen: UIView {
         backgroundColor = .white
     }
     
+    private func configureStackView() {
+        stackViewTextFields.addArrangedSubview(emailTextField)
+        stackViewTextFields.addArrangedSubview(passwordTextField)
+    }
+    
     private func addSubview() {
         addSubview(titleLabel)
         addSubview(subTitleLabel)
-        addSubview(emailTextField)
-        addSubview(passwordTextField)
+        addSubview(stackViewTextFields)
         addSubview(esqueceuSenhaButton)
         addSubview(signInButton)
         addSubview(view)
@@ -163,6 +178,7 @@ class SignInScreen: UIView {
         view.addSubview(registerButton)
         setUpConstraints()
         backgroundColor()
+        configureStackView()
     }
     
     private func setUpConstraints() {
@@ -175,24 +191,19 @@ class SignInScreen: UIView {
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 19),
             subTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 22),
             subTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -22),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: 44),
             
-            emailTextField.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 102),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
-            emailTextField.heightAnchor.constraint(equalToConstant: 55),
+            stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 60),
+            stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+            stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            stackViewTextFields.heightAnchor.constraint(equalToConstant: 110),
             
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 8),
-            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 55),
-            
-            esqueceuSenhaButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 22),
-            esqueceuSenhaButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 255),
+            esqueceuSenhaButton.topAnchor.constraint(equalTo: stackViewTextFields.bottomAnchor, constant: 22),
+            esqueceuSenhaButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 235),
             esqueceuSenhaButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
             
-            view.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 235),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 92),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -92),
             view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54),
             view.heightAnchor.constraint(equalToConstant: 14),
             
@@ -200,14 +211,14 @@ class SignInScreen: UIView {
             sideTextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sideTextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
+            registerButton.topAnchor.constraint(equalTo: view.topAnchor),
+            registerButton.leadingAnchor.constraint(equalTo: sideTextButton.trailingAnchor),
+            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
             signInButton.topAnchor.constraint(equalTo: esqueceuSenhaButton.bottomAnchor, constant: 22),
             signInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             signInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
             signInButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            registerButton.topAnchor.constraint(equalTo: view.topAnchor),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
         ])
     }
