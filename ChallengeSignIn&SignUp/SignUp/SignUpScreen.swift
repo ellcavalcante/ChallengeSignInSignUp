@@ -246,7 +246,7 @@ class SignUpScreen: UIView {
     @objc func validaTextFields() {
         let firstName: String = firstNameTextField.text ?? ""
         let lastName: String = lastNameTextField.text ?? ""
-        let email: String = emailTextField.text ?? ""
+        var email: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
         let confirmPassword: String = confirmPasswordTextField.text ?? ""
         
@@ -254,14 +254,14 @@ class SignUpScreen: UIView {
         if (!firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty) {
             if email == "meu@email.com" {
                 if password == confirmPassword {
-                    if password.count > 4 && confirmPassword.count > 4 {
+                    if password.count > 4 {
                         configButtonEnable(true)
+                        return
                     }
                 }
             }
-        } else {
-            configButtonEnable(false)
         }
+        configButtonEnable(false)
     }
     
     public func configButtonEnable(_ enable: Bool) {
@@ -275,6 +275,13 @@ class SignUpScreen: UIView {
             signUpButton.isEnabled = false
         }
     }
+    
+//    private func validateEmail() -> Bool {
+//        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+//        let validateRegex = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+//
+//        return validateRegex.evaluate(with: self.text)
+//    }
     
     public func configTextFieldDelegate(delegate: UITextFieldDelegate) {
         firstNameTextField.delegate = delegate
@@ -291,11 +298,14 @@ class SignUpScreen: UIView {
             scroll.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scroll.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             scroll.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            scroll.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            conteinerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            conteinerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            conteinerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            conteinerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            conteinerView.topAnchor.constraint(equalTo: scroll.topAnchor),
+            conteinerView.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            conteinerView.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            conteinerView.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            conteinerView.heightAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.heightAnchor),
+            conteinerView.widthAnchor.constraint(equalTo: scroll.widthAnchor),
             
             backButton.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 26),
             backButton.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 17),
@@ -309,8 +319,8 @@ class SignUpScreen: UIView {
             subTitleLabel.widthAnchor.constraint(equalToConstant: 346),
             
             stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 37),
-            stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
-            stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            stackViewTextFields.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
+            stackViewTextFields.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -22),
             stackViewTextFields.heightAnchor.constraint(equalToConstant: 307),
             
             view.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -12),
@@ -323,9 +333,9 @@ class SignUpScreen: UIView {
             bottomTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bottomTitleLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            signUpButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -52),
-            signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
-            signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
+            signUpButton.bottomAnchor.constraint(equalTo: conteinerView.bottomAnchor, constant: -52),
+            signUpButton.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 48),
+            signUpButton.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -48),
             signUpButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
