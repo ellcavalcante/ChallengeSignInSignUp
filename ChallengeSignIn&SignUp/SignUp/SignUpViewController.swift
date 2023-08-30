@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
         screen?.delegate(delegate: self)
         screen?.configTextFieldDelegate(delegate: self)
         screen?.tappedViewBottonScreen()
-        screen?.validaTextFields()
+        screen?.validateTextFields()
         settings()
     }
     

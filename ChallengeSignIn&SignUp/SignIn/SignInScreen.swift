@@ -20,6 +20,18 @@ class SignInScreen: UIView {
         self.delegate = delegate
     }
     
+    public lazy var scroll: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
+    
+    private lazy var conteinerView: UIView = {
+        let conteiner = UIView()
+        conteiner.translatesAutoresizingMaskIntoConstraints = false
+        return conteiner
+    }()
+    
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +94,7 @@ class SignInScreen: UIView {
         return password
     }()
     
-    public lazy var esqueceuSenhaButton: UIButton = {
+    public lazy var forgotThePasswordButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Esqueci a senha", for: .normal)
@@ -168,12 +180,14 @@ class SignInScreen: UIView {
     }
     
     private func addSubview() {
-        addSubview(titleLabel)
-        addSubview(subTitleLabel)
-        addSubview(stackViewTextFields)
-        addSubview(esqueceuSenhaButton)
-        addSubview(signInButton)
-        addSubview(view)
+        addSubview(scroll)
+        scroll.addSubview(conteinerView)
+        conteinerView.addSubview(titleLabel)
+        conteinerView.addSubview(subTitleLabel)
+        conteinerView.addSubview(stackViewTextFields)
+        conteinerView.addSubview(forgotThePasswordButton)
+        conteinerView.addSubview(signInButton)
+        conteinerView.addSubview(view)
         view.addSubview(sideTextButton)
         view.addSubview(registerButton)
         setUpConstraints()
@@ -184,27 +198,40 @@ class SignInScreen: UIView {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 92),
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            scroll.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scroll.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scroll.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            scroll.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            conteinerView.topAnchor.constraint(equalTo: scroll.topAnchor),
+            conteinerView.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            conteinerView.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            conteinerView.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            conteinerView.heightAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.heightAnchor),
+            conteinerView.widthAnchor.constraint(equalTo: scroll.widthAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 92),
+            titleLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -20),
             
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 19),
-            subTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 22),
-            subTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -22),
+            subTitleLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
+            subTitleLabel.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -22),
             subTitleLabel.heightAnchor.constraint(equalToConstant: 44),
             
             stackViewTextFields.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 60),
-            stackViewTextFields.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
-            stackViewTextFields.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            stackViewTextFields.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
+            stackViewTextFields.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -22),
             stackViewTextFields.heightAnchor.constraint(equalToConstant: 110),
             
-            esqueceuSenhaButton.topAnchor.constraint(equalTo: stackViewTextFields.bottomAnchor, constant: 22),
-            esqueceuSenhaButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 235),
-            esqueceuSenhaButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            forgotThePasswordButton.topAnchor.constraint(equalTo: stackViewTextFields.bottomAnchor, constant: 22),
+            forgotThePasswordButton.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 235),
+            forgotThePasswordButton.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -22),
             
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 92),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -92),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54),
+            view.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 92),
+            view.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -92),
+            view.bottomAnchor.constraint(equalTo: conteinerView.bottomAnchor, constant: -54),
             view.heightAnchor.constraint(equalToConstant: 14),
             
             sideTextButton.topAnchor.constraint(equalTo: view.topAnchor),
@@ -215,9 +242,9 @@ class SignInScreen: UIView {
             registerButton.leadingAnchor.constraint(equalTo: sideTextButton.trailingAnchor),
             registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            signInButton.topAnchor.constraint(equalTo: esqueceuSenhaButton.bottomAnchor, constant: 22),
-            signInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
-            signInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
+            signInButton.topAnchor.constraint(equalTo: forgotThePasswordButton.bottomAnchor, constant: 22),
+            signInButton.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 48),
+            signInButton.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -48),
             signInButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])

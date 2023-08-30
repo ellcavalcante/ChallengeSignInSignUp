@@ -29,6 +29,34 @@ class SignInViewController: UIViewController {
         signInScreen?.passwordTextField.text = ""
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+        guard let keyboardSize = (keyboardFrame as? NSValue)?.cgRectValue else { return }
+        
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        
+        self.signInScreen?.scroll.contentInset = contentInsets
+        self.signInScreen?.scroll.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.signInScreen?.scroll.contentInset = .zero
+        self.signInScreen?.scroll.scrollIndicatorInsets = .zero
+    }
+    
     private func settings() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
             view.addGestureRecognizer(tap)

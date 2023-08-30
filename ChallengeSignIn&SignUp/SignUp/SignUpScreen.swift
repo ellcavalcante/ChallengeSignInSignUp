@@ -114,7 +114,7 @@ class SignUpScreen: UIView {
         name.placeholder = "Primeiro nome"
         name.textColor = .darkGray
         name.clearButtonMode = .whileEditing
-        name.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
+        name.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         name.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return name
     }()
@@ -131,7 +131,7 @@ class SignUpScreen: UIView {
         lastName.placeholder = "Último nome"
         lastName.textColor = .darkGray
         lastName.clearButtonMode = .whileEditing
-        lastName.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
+        lastName.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         lastName.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return lastName
     }()
@@ -147,7 +147,7 @@ class SignUpScreen: UIView {
         email.placeholder = "Email"
         email.textColor = .darkGray
         email.clearButtonMode = .whileEditing
-        email.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
+        email.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         email.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return email
     }()
@@ -163,7 +163,7 @@ class SignUpScreen: UIView {
         password.placeholder = "Senha"
         password.isSecureTextEntry = true
         password.textColor = .darkGray
-        password.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
+        password.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         password.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return password
     }()
@@ -179,7 +179,7 @@ class SignUpScreen: UIView {
         confirmPassword.placeholder = "Confirmar senha"
         confirmPassword.isSecureTextEntry = true
         confirmPassword.textColor = .darkGray
-        confirmPassword.addTarget(self, action: #selector(validaTextFields), for: .editingChanged)
+        confirmPassword.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         confirmPassword.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         return confirmPassword
     }()
@@ -243,7 +243,7 @@ class SignUpScreen: UIView {
         background()
     }
     
-    @objc func validaTextFields() {
+    @objc func validateTextFields() {
         let firstName: String = firstNameTextField.text ?? ""
         let lastName: String = lastNameTextField.text ?? ""
         let email: String = emailTextField.text ?? ""
