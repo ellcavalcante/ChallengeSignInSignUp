@@ -246,13 +246,13 @@ class SignUpScreen: UIView {
     @objc func validaTextFields() {
         let firstName: String = firstNameTextField.text ?? ""
         let lastName: String = lastNameTextField.text ?? ""
-        var email: String = emailTextField.text ?? ""
+        let email: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
         let confirmPassword: String = confirmPasswordTextField.text ?? ""
         
         
         if (!firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty) {
-            if email == "meu@email.com" {
+            if isValidEmail(email) == true {
                 if password == confirmPassword {
                     if password.count > 4 {
                         configButtonEnable(true)
@@ -276,12 +276,12 @@ class SignUpScreen: UIView {
         }
     }
     
-//    private func validateEmail() -> Bool {
-//        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-//        let validateRegex = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-//
-//        return validateRegex.evaluate(with: self.text)
-//    }
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
     
     public func configTextFieldDelegate(delegate: UITextFieldDelegate) {
         firstNameTextField.delegate = delegate
